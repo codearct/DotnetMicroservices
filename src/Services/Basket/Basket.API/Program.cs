@@ -2,11 +2,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//BuildIn
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//Redis
+//Application Services
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+//External Services
 builder.Services.AddStackExchangeRedisCache(option =>
 {
     option.Configuration = builder.Configuration
